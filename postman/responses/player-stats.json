@@ -1,0 +1,27 @@
+{
+  "status": "success",
+  "data": {
+    "playerId": "p-2544",
+    "playerName": "LeBron James",
+    "teamId": "t-1610612747",
+    "teamName": "Los Angeles Lakers",
+    "season": "2025-26",
+    "gamesPlayed": 62,
+    "stats": {
+      "pointsPerGame": 25.8,
+      "reboundsPerGame": 7.2,
+      "assistsPerGame": 8.1,
+      "stealsPerGame": 1.2,
+      "blocksPerGame": 0.6,
+      "fieldGoalPercentage": 0.521,
+      "threePointPercentage": 0.387,
+      "freeThrowPercentage": 0.754,
+      "minutesPerGame": 33.4,
+      "turnoversPerGame": 3.1
+    }
+  },
+  "meta": {
+    "requestId": "req-a1b2c3d4",
+    "timestamp": "2026-04-02T10:30:00Z"
+  }
+}

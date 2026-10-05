@@ -1,0 +1,37 @@
+{
+  "id": "env-alpha-001",
+  "name": "NBA GameDay — Alpha",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://alpha-api.nbagameday.com",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "apiKey",
+      "value": "alpha-key-Yt3nQ8sW1xB6",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "apiVersion",
+      "value": "v2",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "environment",
+      "value": "alpha",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "timeout",
+      "value": "15000",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}

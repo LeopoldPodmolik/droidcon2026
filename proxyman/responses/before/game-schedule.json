@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "data": {
+    "date": "2026-04-02",
+    "games": [
+      {
+        "gameId": "g-0022500987",
+        "status": "scheduled",
+        "startTime": "2026-04-02T19:30:00-07:00",
+        "arena": "Crypto.com Arena",
+        "city": "Los Angeles",
+        "homeTeam": {
+          "teamId": "t-1610612747",
+          "name": "Los Angeles Lakers",
+          "abbreviation": "LAL",
+          "record": "45-25"
+        },
+        "awayTeam": {
+          "teamId": "t-1610612738",
+          "name": "Boston Celtics",
+          "abbreviation": "BOS",
+          "record": "52-18"
+        },
+        "broadcast": {
+          "national": "ESPN",
+          "home": "Spectrum SportsNet",
+          "away": "NBC Sports Boston"
+        }
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "req-e5f6g7h8",
+    "timestamp": "2026-04-02T08:00:00Z",
+    "totalGames": 1
+  }
+}

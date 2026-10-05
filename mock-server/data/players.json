@@ -1,0 +1,98 @@
+{
+  "p-2544": {
+    "playerId": "p-2544",
+    "playerName": "LeBron James",
+    "teamId": "t-1610612747",
+    "teamName": "Los Angeles Lakers",
+    "position": "SF",
+    "jerseyNumber": 23,
+    "height": "6-9",
+    "weight": 250,
+    "seasons": {
+      "2025-26": {
+        "gamesPlayed": 62,
+        "stats": {
+          "pointsPerGame": 25.8,
+          "reboundsPerGame": 7.2,
+          "assistsPerGame": 8.1,
+          "stealsPerGame": 1.2,
+          "blocksPerGame": 0.6,
+          "fieldGoalPercentage": 0.521,
+          "threePointPercentage": 0.387,
+          "freeThrowPercentage": 0.754,
+          "minutesPerGame": 33.4,
+          "turnoversPerGame": 3.1
+        }
+      },
+      "2024-25": {
+        "gamesPlayed": 71,
+        "stats": {
+          "pointsPerGame": 23.5,
+          "reboundsPerGame": 7.9,
+          "assistsPerGame": 9.0,
+          "stealsPerGame": 1.3,
+          "blocksPerGame": 0.5,
+          "fieldGoalPercentage": 0.503,
+          "threePointPercentage": 0.362,
+          "freeThrowPercentage": 0.761,
+          "minutesPerGame": 35.2,
+          "turnoversPerGame": 3.5
+        }
+      }
+    }
+  },
+  "p-1628369": {
+    "playerId": "p-1628369",
+    "playerName": "Jayson Tatum",
+    "teamId": "t-1610612738",
+    "teamName": "Boston Celtics",
+    "position": "SF",
+    "jerseyNumber": 0,
+    "height": "6-8",
+    "weight": 210,
+    "seasons": {
+      "2025-26": {
+        "gamesPlayed": 68,
+        "stats": {
+          "pointsPerGame": 27.4,
+          "reboundsPerGame": 8.8,
+          "assistsPerGame": 4.9,
+          "stealsPerGame": 1.1,
+          "blocksPerGame": 0.7,
+          "fieldGoalPercentage": 0.471,
+          "threePointPercentage": 0.378,
+          "freeThrowPercentage": 0.832,
+          "minutesPerGame": 36.1,
+          "turnoversPerGame": 2.8
+        }
+      }
+    }
+  },
+  "p-201939": {
+    "playerId": "p-201939",
+    "playerName": "Stephen Curry",
+    "teamId": "t-1610612744",
+    "teamName": "Golden State Warriors",
+    "position": "PG",
+    "jerseyNumber": 30,
+    "height": "6-2",
+    "weight": 185,
+    "seasons": {
+      "2025-26": {
+        "gamesPlayed": 64,
+        "stats": {
+          "pointsPerGame": 29.3,
+          "reboundsPerGame": 5.5,
+          "assistsPerGame": 6.4,
+          "stealsPerGame": 0.9,
+          "blocksPerGame": 0.3,
+          "fieldGoalPercentage": 0.487,
+          "threePointPercentage": 0.421,
+          "freeThrowPercentage": 0.911,
+          "minutesPerGame": 34.8,
+          "turnoversPerGame": 3.2
+        }
+      }
+    }
+  }
+}

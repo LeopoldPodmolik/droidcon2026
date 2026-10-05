@@ -1,0 +1,20 @@
+{
+  "tool": "create_map_local",
+  "reviewed": true,
+  "arguments": {
+    "name": "NBA live scores v2",
+    "url": "*/api/v2/nba/live-scores*",
+    "method": "GET",
+    "status_code": 200,
+    "content_type": "application/json",
+    "response_body_file": "../../proxyman/mocks/live-scores.json"
+  },
+  "proxymanUi": {
+    "matchBy": "Wildcard",
+    "mapTo": "Local file",
+    "httpStatus": "200 OK",
+    "responseHeaders": {
+      "Content-Type": "application/json"
+    }
+  }
+}

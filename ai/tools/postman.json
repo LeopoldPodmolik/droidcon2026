@@ -1,0 +1,66 @@
+{
+  "server": "postman",
+  "transport": "http",
+  "runsOn": "https://mcp.postman.com/mcp — your cloud workspace",
+  "tools": [
+    {
+      "name": "searchPostmanElements",
+      "usedIn": "Find the NBA GameDay workspace, collection, or request",
+      "description": "Search requests, collections, workspaces, specs, or environments.",
+      "arguments": {
+        "entityType": "requests | collections | workspaces | specs | environments | mocks | documents",
+        "q": "Search text, max 512 characters.",
+        "ownership": "organization (default) | external | all",
+        "limit": "1–25. Default 10."
+      },
+      "exampleCall": {
+        "entityType": "workspaces",
+        "q": "NBA GameDay",
+        "ownership": "organization"
+      }
+    },
+    {
+      "name": "createEnvironment",
+      "usedIn": "Generate the Production environment",
+      "description": "Create an environment in a workspace. Secret variables are masked.",
+      "arguments": {
+        "workspace": "Workspace id. Required.",
+        "environment.name": "Display name.",
+        "environment.values": "Array of { key, value, type, enabled }. type is default or secret."
+      },
+      "exampleCall": {
+        "workspace": "<workspace-id from searchPostmanElements>",
+        "environment": "see examples/generated-environment.json"
+      }
+    },
+    {
+      "name": "createCollection",
+      "usedIn": "Scaffold the live-scores request",
+      "description": "Create a collection in Collection v2.1 format, including requests and prerequest or test events.",
+      "arguments": {
+        "workspace": "Workspace id. Required.",
+        "collection.info": "{ name, schema }. schema is the v2.1 collection schema URL.",
+        "collection.item": "Folders and requests.",
+        "collection.event": "listen is prerequest or test. script.exec is the JavaScript, one string per line."
+      },
+      "exampleCall": {
+        "workspace": "<workspace-id>",
+        "collection": {
+          "info": {
+            "name": "NBA GameDay",
+            "schema": "https://schema.postman.com/json/collection/v2.1.0/collection.json"
+          },
+          "item": [
+            {
+              "name": "Live scores",
+              "request": {
+                "method": "GET",
+                "url": "{{baseUrl}}/api/v2/nba/live-scores"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

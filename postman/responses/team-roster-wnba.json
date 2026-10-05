@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "data": {
+    "teamId": "t-1611661317",
+    "teamName": "Las Vegas Aces",
+    "league": "WNBA",
+    "roster": [
+      {
+        "playerId": "p-1628932",
+        "name": "A'ja Wilson",
+        "position": "PF",
+        "jerseyNumber": 22,
+        "height": "6-4",
+        "weight": 195
+      },
+      {
+        "playerId": "p-1629482",
+        "name": "Kelsey Plum",
+        "position": "PG",
+        "jerseyNumber": 10,
+        "height": "5-8",
+        "weight": 146
+      }
+    ]
+  }
+}

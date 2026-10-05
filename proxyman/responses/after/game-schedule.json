@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "data": {
+    "date": "2026-04-02",
+    "games": [
+      {
+        "gameId": "g-0022500987",
+        "status": "live",
+        "period": 2,
+        "gameClock": "03:45",
+        "startTime": "2026-04-02T19:30:00-07:00",
+        "arena": "Crypto.com Arena",
+        "city": "Los Angeles",
+        "homeTeam": {
+          "teamId": "t-1610612747",
+          "name": "Los Angeles Lakers",
+          "abbreviation": "LAL",
+          "record": "45-25",
+          "score": 48,
+          "timeoutsRemaining": 4,
+          "bonusActive": false,
+          "quarterScores": [24, 24]
+        },
+        "awayTeam": {
+          "teamId": "t-1610612738",
+          "name": "Boston Celtics",
+          "abbreviation": "BOS",
+          "record": "52-18",
+          "score": 52,
+          "timeoutsRemaining": 3,
+          "bonusActive": true,
+          "quarterScores": [28, 24]
+        },
+        "broadcast": {
+          "national": "ESPN",
+          "home": "Spectrum SportsNet",
+          "away": "NBC Sports Boston"
+        },
+        "lastPlayDescription": "Jayson Tatum makes 22-foot step back jump shot",
+        "tvTimeout": false,
+        "possession": "t-1610612747"
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "req-e5f6g7h8",
+    "timestamp": "2026-04-02T08:00:00Z",
+    "totalGames": 1
+  }
+}

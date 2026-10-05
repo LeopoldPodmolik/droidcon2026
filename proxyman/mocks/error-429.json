@@ -1,0 +1,17 @@
+{
+  "status": "error",
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "You have exceeded the rate limit of 100 requests per minute. Please wait before retrying.",
+    "details": {
+      "limit": 100,
+      "windowSeconds": 60,
+      "remaining": 0,
+      "resetAt": "2026-04-02T10:31:00Z"
+    }
+  },
+  "meta": {
+    "requestId": "req-err-429-001",
+    "timestamp": "2026-04-02T10:30:00Z"
+  }
+}

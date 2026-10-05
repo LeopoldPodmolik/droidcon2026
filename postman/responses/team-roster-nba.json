@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "data": {
+    "teamId": "t-1610612747",
+    "teamName": "Los Angeles Lakers",
+    "league": "NBA",
+    "roster": [
+      {
+        "playerId": "p-2544",
+        "name": "LeBron James",
+        "position": "SF",
+        "jerseyNumber": 23,
+        "height": "6-9",
+        "weight": 250
+      },
+      {
+        "playerId": "p-1629630",
+        "name": "Anthony Davis",
+        "position": "PF/C",
+        "jerseyNumber": 3,
+        "height": "6-10",
+        "weight": 253
+      }
+    ]
+  }
+}

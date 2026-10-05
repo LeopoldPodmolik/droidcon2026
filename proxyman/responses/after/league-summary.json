@@ -1,0 +1,59 @@
+{
+  "status": "success",
+  "data": {
+    "sportsLeague": "NBA",
+    "leagueFullName": "National Basketball Association",
+    "season": "2025-26",
+    "seasonType": "Regular Season",
+    "teams": [
+      {
+        "teamId": "t-1610612747",
+        "name": "Los Angeles Lakers",
+        "abbreviation": "LAL",
+        "conference": "Western",
+        "division": "Pacific",
+        "arena": "Crypto.com Arena",
+        "city": "Los Angeles",
+        "primaryColor": "#552583",
+        "secondaryColor": "#FDB927"
+      },
+      {
+        "teamId": "t-1610612738",
+        "name": "Boston Celtics",
+        "abbreviation": "BOS",
+        "conference": "Eastern",
+        "division": "Atlantic",
+        "arena": "TD Garden",
+        "city": "Boston",
+        "primaryColor": "#007A33",
+        "secondaryColor": "#BA9653"
+      },
+      {
+        "teamId": "t-1610612744",
+        "name": "Golden State Warriors",
+        "abbreviation": "GSW",
+        "conference": "Western",
+        "division": "Pacific",
+        "arena": "Chase Center",
+        "city": "San Francisco",
+        "primaryColor": "#1D428A",
+        "secondaryColor": "#FFC72C"
+      }
+    ],
+    "featuredPlayer": {
+      "playerId": "p-2544",
+      "name": "LeBron James",
+      "position": "SF",
+      "teamName": "Los Angeles Lakers",
+      "stats": {
+        "pointsPerGame": 25.8,
+        "reboundsPerGame": 7.2,
+        "assistsPerGame": 8.1
+      }
+    }
+  },
+  "meta": {
+    "requestId": "req-nfl-001",
+    "timestamp": "2026-04-02T10:00:00Z"
+  }
+}

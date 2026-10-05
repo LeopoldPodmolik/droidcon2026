@@ -1,0 +1,85 @@
+{
+  "id": "env-local-001",
+  "name": "NBA GameDay — Localhost",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "apiKey",
+      "value": "demo-token",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "apiVersion",
+      "value": "v1",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "environment",
+      "value": "local",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "playerId",
+      "value": "p-2544",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "season",
+      "value": "2025-26",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "teamId",
+      "value": "t-1610612747",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "gameDate",
+      "value": "2026-04-02",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "conference",
+      "value": "west",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "platform",
+      "value": "android",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "clientId",
+      "value": "nbagameday-android",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "clientSecret",
+      "value": "demo-secret-123",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "timeout",
+      "value": "30000",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}

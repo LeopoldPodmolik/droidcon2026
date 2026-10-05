@@ -1,0 +1,15 @@
+{
+  "status": "error",
+  "error": {
+    "code": "INTERNAL_SERVER_ERROR",
+    "message": "An unexpected error occurred while processing your request. Our team has been notified.",
+    "details": {
+      "incidentId": "INC-2026040215300042",
+      "retryAfterSeconds": 30
+    }
+  },
+  "meta": {
+    "requestId": "req-err-500-001",
+    "timestamp": "2026-04-02T10:30:00Z"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "t-1610612747": {
+    "teamId": "t-1610612747",
+    "name": "Los Angeles Lakers",
+    "abbreviation": "LAL",
+    "conference": "Western",
+    "division": "Pacific",
+    "arena": "Crypto.com Arena",
+    "city": "Los Angeles",
+    "primaryColor": "#552583",
+    "secondaryColor": "#FDB927",
+    "record": "45-25",
+    "roster": [
+      { "playerId": "p-2544", "name": "LeBron James", "position": "SF", "jerseyNumber": 23, "height": "6-9", "weight": 250 },
+      { "playerId": "p-1629630", "name": "Anthony Davis", "position": "PF/C", "jerseyNumber": 3, "height": "6-10", "weight": 253 },
+      { "playerId": "p-1630559", "name": "Austin Reaves", "position": "SG", "jerseyNumber": 15, "height": "6-5", "weight": 197 }
+    ]
+  },
+  "t-1610612738": {
+    "teamId": "t-1610612738",
+    "name": "Boston Celtics",
+    "abbreviation": "BOS",
+    "conference": "Eastern",
+    "division": "Atlantic",
+    "arena": "TD Garden",
+    "city": "Boston",
+    "primaryColor": "#007A33",
+    "secondaryColor": "#BA9653",
+    "record": "52-18",
+    "roster": [
+      { "playerId": "p-1628369", "name": "Jayson Tatum", "position": "SF", "jerseyNumber": 0, "height": "6-8", "weight": 210 },
+      { "playerId": "p-1628370", "name": "Jaylen Brown", "position": "SG", "jerseyNumber": 7, "height": "6-6", "weight": 223 },
+      { "playerId": "p-203935", "name": "Jrue Holiday", "position": "PG", "jerseyNumber": 4, "height": "6-3", "weight": 205 }
+    ]
+  },
+  "t-1610612744": {
+    "teamId": "t-1610612744",
+    "name": "Golden State Warriors",
+    "abbreviation": "GSW",
+    "conference": "Western",
+    "division": "Pacific",
+    "arena": "Chase Center",
+    "city": "San Francisco",
+    "primaryColor": "#1D428A",
+    "secondaryColor": "#FFC72C",
+    "record": "54-16",
+    "roster": [
+      { "playerId": "p-201939", "name": "Stephen Curry", "position": "PG", "jerseyNumber": 30, "height": "6-2", "weight": 185 },
+      { "playerId": "p-1627775", "name": "Draymond Green", "position": "PF", "jerseyNumber": 23, "height": "6-6", "weight": 230 },
+      { "playerId": "p-1628398", "name": "Andrew Wiggins", "position": "SF", "jerseyNumber": 22, "height": "6-7", "weight": 197 }
+    ]
+  }
+}

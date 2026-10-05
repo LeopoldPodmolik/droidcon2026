@@ -1,0 +1,75 @@
+{
+  "status": "success",
+  "data": {
+    "gameId": "g-0022500987",
+    "period": 3,
+    "plays": [
+      {
+        "playId": "play-001",
+        "clock": "04:32",
+        "period": 3,
+        "teamId": "t-1610612747",
+        "playType": "MADE_SHOT",
+        "description": "LeBron James makes 18-foot pullup jump shot",
+        "player": { "playerId": "p-2544", "name": "LeBron James" },
+        "scoreHome": 78,
+        "scoreAway": 82,
+        "coordinates": { "x": 22.5, "y": 14.3 }
+      },
+      {
+        "playId": "play-002",
+        "clock": "04:10",
+        "period": 3,
+        "teamId": "t-1610612738",
+        "playType": "TURNOVER",
+        "description": "Jayson Tatum bad pass turnover",
+        "player": { "playerId": "p-1628369", "name": "Jayson Tatum" },
+        "scoreHome": 78,
+        "scoreAway": 82,
+        "coordinates": null
+      },
+      {
+        "playId": "play-003",
+        "clock": "03:55",
+        "period": 3,
+        "teamId": "t-1610612747",
+        "playType": "MADE_SHOT",
+        "description": "Anthony Davis makes dunk (LeBron James assists)",
+        "player": { "playerId": "p-1629630", "name": "Anthony Davis" },
+        "assistPlayer": { "playerId": "p-2544", "name": "LeBron James" },
+        "scoreHome": 80,
+        "scoreAway": 82,
+        "coordinates": { "x": 5.2, "y": 25.0 }
+      },
+      {
+        "playId": "play-004",
+        "clock": "03:42",
+        "period": 3,
+        "teamId": "t-1610612738",
+        "playType": "MADE_THREE",
+        "description": "Jayson Tatum makes 26-foot three point shot",
+        "player": { "playerId": "p-1628369", "name": "Jayson Tatum" },
+        "scoreHome": 80,
+        "scoreAway": 85,
+        "coordinates": { "x": 35.1, "y": 8.7 }
+      },
+      {
+        "playId": "play-005",
+        "clock": "03:20",
+        "period": 3,
+        "teamId": null,
+        "playType": "TIMEOUT",
+        "description": "Los Angeles Lakers full timeout",
+        "player": null,
+        "scoreHome": 80,
+        "scoreAway": 85,
+        "coordinates": null
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "req-pbp-001",
+    "timestamp": "2026-04-02T19:47:00Z",
+    "totalPlays": 5
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "tool": "create_map_local",
+  "reviewed": false,
+  "reject": true,
+  "reason": "The * after /nba/ also matches /api/v2/nba/play-by-play and any later v2 NBA route. One enabled rule replaces those responses with the live-scores body.",
+  "arguments": {
+    "name": "NBA v2 (first draft)",
+    "url": "*/api/v2/nba/*",
+    "method": "GET",
+    "status_code": 200,
+    "content_type": "application/json",
+    "response_body_file": "../../proxyman/mocks/live-scores.json"
+  },
+  "alsoMatches": [
+    "GET /api/v2/nba/play-by-play",
+    "GET /api/v2/nba/standings"
+  ],
+  "useInstead": "examples/generated-map-local.json"
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "proxyman": {
+      "command": "/Applications/Proxyman.app/Contents/MacOS/mcp-server",
+      "args": []
+    },
+    "postman": {
+      "url": "https://mcp.postman.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "data": {
+    "sportsLeague": "NFL",
+    "leagueFullName": "National Football League",
+    "season": "2025",
+    "seasonType": "Regular Season",
+    "teams": [
+      {
+        "teamId": "nfl-t-001",
+        "name": "Kansas City Chiefs",
+        "abbreviation": "KC",
+        "conference": "AFC",
+        "division": "West",
+        "arena": "Arrowhead Stadium",
+        "city": "Kansas City",
+        "primaryColor": "#E31837",
+        "secondaryColor": "#FFB81C"
+      }
+    ],
+    "featuredPlayer": {
+      "playerId": "nfl-p-001",
+      "name": "Patrick Mahomes",
+      "position": "QB",
+      "teamName": "Kansas City Chiefs",
+      "stats": {
+        "passingYards": 4839,
+        "touchdowns": 38,
+        "interceptions": 12
+      }
+    }
+  },
+  "meta": {
+    "requestId": "req-nfl-001",
+    "timestamp": "2026-04-02T10:00:00Z"
+  }
+}

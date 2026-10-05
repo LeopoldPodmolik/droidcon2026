@@ -1,0 +1,38 @@
+{
+  "status": "success",
+  "data": {
+    "conference": "West",
+    "season": "2025-26",
+    "standings": [
+      {
+        "rank": 1,
+        "teamId": "t-1610612744",
+        "teamName": "Golden State Warriors",
+        "abbreviation": "GSW",
+        "wins": 54,
+        "losses": 16,
+        "winPercentage": 0.771,
+        "gamesBack": 0.0,
+        "streak": "W5",
+        "lastTen": "8-2"
+      },
+      {
+        "rank": 5,
+        "teamId": "t-1610612747",
+        "teamName": "Los Angeles Lakers",
+        "abbreviation": "LAL",
+        "wins": 45,
+        "losses": 25,
+        "winPercentage": 0.643,
+        "gamesBack": 9.0,
+        "streak": "W2",
+        "lastTen": "6-4"
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "req-i9j0k1l2",
+    "timestamp": "2026-04-02T08:00:00Z",
+    "totalTeams": 15
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "status": "success",
+  "data": {
+    "lastUpdated": "2026-04-02T19:45:00Z",
+    "games": [
+      {
+        "gameId": "g-0022500987",
+        "status": "live",
+        "period": 3,
+        "gameClock": "04:32",
+        "startTime": "2026-04-02T19:30:00-07:00",
+        "arena": "Crypto.com Arena",
+        "homeTeam": {
+          "teamId": "t-1610612747",
+          "name": "Los Angeles Lakers",
+          "abbreviation": "LAL",
+          "score": 78,
+          "timeoutsRemaining": 3,
+          "bonusActive": false,
+          "leaders": {
+            "points": { "playerId": "p-2544", "name": "LeBron James", "value": 22 },
+            "rebounds": { "playerId": "p-1629630", "name": "Anthony Davis", "value": 9 },
+            "assists": { "playerId": "p-2544", "name": "LeBron James", "value": 7 }
+          }
+        },
+        "awayTeam": {
+          "teamId": "t-1610612738",
+          "name": "Boston Celtics",
+          "abbreviation": "BOS",
+          "score": 82,
+          "timeoutsRemaining": 4,
+          "bonusActive": true,
+          "leaders": {
+            "points": { "playerId": "p-1628369", "name": "Jayson Tatum", "value": 28 },
+            "rebounds": { "playerId": "p-1628369", "name": "Jayson Tatum", "value": 8 },
+            "assists": { "playerId": "p-203935", "name": "Jrue Holiday", "value": 6 }
+          }
+        }
+      },
+      {
+        "gameId": "g-0022500988",
+        "status": "live",
+        "period": 2,
+        "gameClock": "01:15",
+        "startTime": "2026-04-02T20:00:00-07:00",
+        "arena": "Chase Center",
+        "homeTeam": {
+          "teamId": "t-1610612744",
+          "name": "Golden State Warriors",
+          "abbreviation": "GSW",
+          "score": 55,
+          "timeoutsRemaining": 5,
+          "bonusActive": false,
+          "leaders": {
+            "points": { "playerId": "p-201939", "name": "Stephen Curry", "value": 19 },
+            "rebounds": { "playerId": "p-1627775", "name": "Draymond Green", "value": 5 },
+            "assists": { "playerId": "p-201939", "name": "Stephen Curry", "value": 5 }
+          }
+        },
+        "awayTeam": {
+          "teamId": "t-1610612748",
+          "name": "Miami Heat",
+          "abbreviation": "MIA",
+          "score": 49,
+          "timeoutsRemaining": 4,
+          "bonusActive": false,
+          "leaders": {
+            "points": { "playerId": "p-1629216", "name": "Jimmy Butler", "value": 15 },
+            "rebounds": { "playerId": "p-1629636", "name": "Bam Adebayo", "value": 7 },
+            "assists": { "playerId": "p-1629216", "name": "Jimmy Butler", "value": 4 }
+          }
+        }
+      }
+    ]
+  },
+  "meta": {
+    "requestId": "req-m3n4o5p6",
+    "timestamp": "2026-04-02T19:45:00Z",
+    "pollingIntervalMs": 10000
+  }
+}

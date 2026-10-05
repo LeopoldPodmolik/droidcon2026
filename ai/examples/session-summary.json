@@ -1,0 +1,74 @@
+{
+  "prompt": "Which NBA live-score call failed?",
+  "toolCalls": [
+    {
+      "tool": "get_flows",
+      "arguments": {
+        "host_filter": "api.nbagameday.com",
+        "limit": 200
+      }
+    },
+    {
+      "tool": "filter_flows",
+      "arguments": {
+        "combination": "and",
+        "filters": [
+          { "key": "url", "matching": "contains", "value": "live-scores" },
+          { "key": "statusCode", "matching": "notEqual", "value": "200" }
+        ],
+        "limit": 20
+      }
+    }
+  ],
+  "session": {
+    "host": "api.nbagameday.com",
+    "totalFlows": 214,
+    "returnedByGetFlows": 200,
+    "byStatus": {
+      "200": 198,
+      "304": 14,
+      "404": 1,
+      "500": 1
+    }
+  },
+  "suspects": [
+    {
+      "id": "flow-9f3a",
+      "method": "GET",
+      "url": "https://api.nbagameday.com/api/v2/nba/live-scores",
+      "status": 500,
+      "durationMs": 842,
+      "requestHeaders": {
+        "Authorization": "Bearer ***REDACTED***",
+        "Accept": "application/json"
+      },
+      "responseBody": {
+        "status": "error",
+        "error": {
+          "code": "INTERNAL_ERROR",
+          "message": "Live scores handler is not implemented"
+        }
+      },
+      "verdict": "The call the live screen makes. Backend has not shipped /api/v2/nba/live-scores."
+    },
+    {
+      "id": "flow-1c07",
+      "method": "GET",
+      "url": "https://api.nbagameday.com/api/v1/nba/live-scores",
+      "status": 404,
+      "durationMs": 96,
+      "requestHeaders": {
+        "Authorization": "Bearer ***REDACTED***",
+        "Accept": "application/json"
+      },
+      "responseBody": {
+        "status": "error",
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "No route for /api/v1/nba/live-scores"
+        }
+      },
+      "verdict": "Same feature, old path. The app is still requesting v1. This route was never shipped."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "server": "proxyman",
+  "transport": "stdio",
+  "runsOn": "localhost, against the open Proxyman app",
+  "tools": [
+    {
+      "name": "get_flows",
+      "usedIn": "Problem analysis — first call",
+      "description": "Return recent HTTP flows from the open Proxyman session.",
+      "arguments": {
+        "host_filter": "Case-insensitive substring of the host.",
+        "method_filter": "GET, POST, …",
+        "status_filter": "Exact status code, e.g. 500.",
+        "limit": "Max flows. Default 50, max 500."
+      },
+      "exampleCall": {
+        "host_filter": "api.nbagameday.com",
+        "limit": 200
+      }
+    },
+    {
+      "name": "filter_flows",
+      "usedIn": "Problem analysis — narrow the session",
+      "description": "Filter captured flows. Combine conditions with and/or.",
+      "arguments": {
+        "combination": "and | or",
+        "filters": "Each item is { key, matching, value }. key is url, host, method, statusCode, requestHeader, responseHeader, requestBody, responseBody, or client.",
+        "limit": "Max flows. Default 50, max 500."
+      },
+      "exampleCall": {
+        "combination": "and",
+        "filters": [
+          { "key": "url", "matching": "contains", "value": "live-scores" },
+          { "key": "statusCode", "matching": "notEqual", "value": "200" }
+        ],
+        "limit": 20
+      }
+    },
+    {
+      "name": "get_flow_detail",
+      "usedIn": "Problem analysis — open one suspect",
+      "description": "Full request and response for one flow id from get_flows or filter_flows.",
+      "arguments": {
+        "id": "Flow id returned by get_flows or filter_flows."
+      }
+    },
+    {
+      "name": "create_scripting_rule",
+      "usedIn": "Rewrite sportsLeague on /league/summary",
+      "description": "Create a Scripting rule. Handlers are onRequest(context, url, request) and onResponse(context, url, request, response). Return the request or the response.",
+      "arguments": {
+        "name": "Rule name.",
+        "url": "URL pattern. Wildcards allowed.",
+        "method": "ANY, GET, POST, … Default ANY.",
+        "script_content": "The JavaScript source.",
+        "enable_request": "Run onRequest. Default true.",
+        "enable_response": "Run onResponse. Default true."
+      },
+      "exampleCall": {
+        "name": "League summary — sportsLeague NBA",
+        "url": "*/api/v1/league/summary*",
+        "method": "GET",
+        "enable_request": false,
+        "enable_response": true,
+        "script_content": "see examples/generated-script.js"
+      }
+    },
+    {
+      "name": "create_map_local",
+      "usedIn": "Demo 4 — mock /api/v2/nba/live-scores",
+      "description": "Return a fixed response for matching requests instead of forwarding them.",
+      "arguments": {
+        "name": "Rule name.",
+        "url": "URL pattern. Wildcards allowed. Required.",
+        "method": "ANY, GET, POST, … Default ANY.",
+        "status_code": "HTTP status. Default 200.",
+        "content_type": "Content-Type header. Default application/json.",
+        "response_body": "Body to return. Default {}."
+      },
+      "exampleCall": {
+        "name": "NBA live scores v2",
+        "url": "*/api/v2/nba/live-scores*",
+        "method": "GET",
+        "status_code": 200,
+        "content_type": "application/json",
+        "response_body": "see proxyman/mocks/live-scores.json"
+      }
+    },
+    {
+      "name": "list_rules",
+      "usedIn": "Review — see what is already enabled",
+      "description": "List Map Local, Scripting, and other rules before adding another one.",
+      "arguments": {}
+    }
+  ]
+}

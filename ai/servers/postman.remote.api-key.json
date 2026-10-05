@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "postman": {
+      "url": "https://mcp.postman.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:POSTMAN_API_KEY}"
+      }
+    }
+  }
+}

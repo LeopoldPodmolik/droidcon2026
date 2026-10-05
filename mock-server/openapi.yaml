@@ -1,0 +1,783 @@
+openapi: 3.0.3
+info:
+  title: NBA GameDay API
+  version: 2.0.0
+  description: |
+    Complete mock API for NBA GameDay mobile app.
+    Covers all endpoints used in the Postman & Proxyman presentation demos.
+
+    **Quick start with Prism:**
+    ```bash
+    npx @stoplight/prism-cli mock openapi.yaml --port 4010
+
+    # Or to make it accessible from external devices on your network:
+    npx @stoplight/prism-cli mock openapi.yaml --host 0.0.0.0 --port 4010
+    ```
+
+servers:
+  - url: http://localhost:3000
+    description: Local mock server (Express)
+  - url: http://localhost:4010
+    description: Prism mock server
+  - url: https://api.nbagameday.com
+    description: Production (fictional)
+  - url: https://alpha-api.nbagameday.com
+    description: Alpha (fictional)
+  - url: https://beta-api.nbagameday.com
+    description: Beta (fictional)
+
+tags:
+  - name: Auth
+    description: Authentication endpoints
+  - name: Players
+    description: Player statistics
+  - name: Games
+    description: Game schedules and results
+  - name: Standings
+    description: League standings
+  - name: Teams
+    description: Team information
+  - name: League
+    description: League-level data
+  - name: Live Scores
+    description: Real-time live game scores (v2)
+  - name: Play-by-Play
+    description: Real-time play-by-play data (v2)
+
+paths:
+  /api/v1/auth/token:
+    post:
+      summary: Get JWT authentication token
+      operationId: getAuthToken
+      tags: [Auth]
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [clientId, clientSecret, grantType]
+              properties:
+                clientId:
+                  type: string
+                  example: "nbagameday-android"
+                clientSecret:
+                  type: string
+                  example: "secret-abc123"
+                grantType:
+                  type: string
+                  enum: [client_credentials]
+      responses:
+        '200':
+          description: Token issued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    example: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  tokenType:
+                    type: string
+                    example: "Bearer"
+                  expiresIn:
+                    type: integer
+                    example: 900
+                  scope:
+                    type: string
+                    example: "read:stats read:games read:standings"
+
+  /api/v1/players/{playerId}/stats:
+    get:
+      summary: Get player statistics
+      operationId: getPlayerStats
+      tags: [Players]
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            lebron:
+              value: "p-2544"
+              summary: LeBron James
+            tatum:
+              value: "p-1628369"
+              summary: Jayson Tatum
+            curry:
+              value: "p-201939"
+              summary: Stephen Curry
+        - name: season
+          in: query
+          schema:
+            type: string
+            default: "2025-26"
+          examples:
+            current:
+              value: "2025-26"
+            previous:
+              value: "2024-25"
+      responses:
+        '200':
+          description: Player stats retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlayerStatsResponse'
+              example:
+                status: "success"
+                data:
+                  playerId: "p-2544"
+                  playerName: "LeBron James"
+                  teamId: "t-1610612747"
+                  teamName: "Los Angeles Lakers"
+                  season: "2025-26"
+                  gamesPlayed: 62
+                  stats:
+                    pointsPerGame: 25.8
+                    reboundsPerGame: 7.2
+                    assistsPerGame: 8.1
+                    stealsPerGame: 1.2
+                    blocksPerGame: 0.6
+                    fieldGoalPercentage: 0.521
+                    threePointPercentage: 0.387
+                    freeThrowPercentage: 0.754
+                    minutesPerGame: 33.4
+                    turnoversPerGame: 3.1
+                meta:
+                  requestId: "req-a1b2c3d4"
+                  timestamp: "2026-04-02T10:30:00Z"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/v1/games:
+    get:
+      summary: Get game schedule
+      operationId: getGames
+      tags: [Games]
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+            example: "2026-04-02"
+        - name: teamId
+          in: query
+          schema:
+            type: string
+            example: "t-1610612747"
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [scheduled, live, final, postponed]
+      responses:
+        '200':
+          description: Games retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GamesResponse'
+              example:
+                status: "success"
+                data:
+                  date: "2026-04-02"
+                  games:
+                    - gameId: "g-0022500987"
+                      status: "scheduled"
+                      startTime: "2026-04-02T19:30:00-07:00"
+                      arena: "Crypto.com Arena"
+                      city: "Los Angeles"
+                      homeTeam:
+                        teamId: "t-1610612747"
+                        name: "Los Angeles Lakers"
+                        abbreviation: "LAL"
+                        record: "45-25"
+                      awayTeam:
+                        teamId: "t-1610612738"
+                        name: "Boston Celtics"
+                        abbreviation: "BOS"
+                        record: "52-18"
+                      broadcast:
+                        national: "ESPN"
+                        home: "Spectrum SportsNet"
+                        away: "NBC Sports Boston"
+                meta:
+                  requestId: "req-e5f6g7h8"
+                  timestamp: "2026-04-02T08:00:00Z"
+                  totalGames: 1
+
+  /api/v1/standings:
+    get:
+      summary: Get league standings
+      operationId: getStandings
+      tags: [Standings]
+      parameters:
+        - name: conference
+          in: query
+          schema:
+            type: string
+            enum: [west, east]
+            default: west
+        - name: season
+          in: query
+          schema:
+            type: string
+            default: "2025-26"
+      responses:
+        '200':
+          description: Standings retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandingsResponse'
+
+  /api/v1/teams/{teamId}/roster:
+    get:
+      summary: Get team roster
+      operationId: getTeamRoster
+      tags: [Teams]
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            lakers:
+              value: "t-1610612747"
+              summary: Los Angeles Lakers
+            celtics:
+              value: "t-1610612738"
+              summary: Boston Celtics
+            warriors:
+              value: "t-1610612744"
+              summary: Golden State Warriors
+      responses:
+        '200':
+          description: Team roster retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RosterResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/v1/league/summary:
+    get:
+      summary: Get league summary (returns NFL data for Proxyman demo)
+      operationId: getLeagueSummary
+      tags: [League]
+      responses:
+        '200':
+          description: League summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeagueSummaryResponse'
+
+  /api/v2/nba/live-scores:
+    get:
+      summary: Get live game scores
+      operationId: getLiveScores
+      tags: [Live Scores]
+      responses:
+        '404':
+          description: Endpoint intentionally missing for Proxyman Map Local demo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                status: "error"
+                error:
+                  code: "NOT_FOUND"
+                  message: "The /api/v2/nba/live-scores endpoint is not yet implemented on the server."
+                meta:
+                  requestId: "req-err123"
+                  timestamp: "2026-04-02T10:30:00Z"
+
+  /api/v2/nba/games/{gameId}/play-by-play:
+    get:
+      summary: Get play-by-play data
+      operationId: getPlayByPlay
+      tags: [Play-by-Play]
+      parameters:
+        - name: gameId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "g-0022500987"
+        - name: period
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 6
+            default: 3
+      responses:
+        '404':
+          description: Endpoint intentionally missing for Proxyman Map Local demo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                status: "error"
+                error:
+                  code: "NOT_FOUND"
+                  message: "The play-by-play endpoint is not yet implemented on the server."
+                meta:
+                  requestId: "req-err456"
+                  timestamp: "2026-04-02T10:30:00Z"
+
+components:
+  schemas:
+    Meta:
+      type: object
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [error]
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            details:
+              type: object
+        meta:
+          $ref: '#/components/schemas/Meta'
+
+    PlayerStats:
+      type: object
+      properties:
+        pointsPerGame: { type: number }
+        reboundsPerGame: { type: number }
+        assistsPerGame: { type: number }
+        stealsPerGame: { type: number }
+        blocksPerGame: { type: number }
+        fieldGoalPercentage: { type: number }
+        threePointPercentage: { type: number }
+        freeThrowPercentage: { type: number }
+        minutesPerGame: { type: number }
+        turnoversPerGame: { type: number }
+
+    PlayerStatsResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            playerId: { type: string }
+            playerName: { type: string }
+            teamId: { type: string }
+            teamName: { type: string }
+            season: { type: string }
+            gamesPlayed: { type: integer }
+            stats: { $ref: '#/components/schemas/PlayerStats' }
+        meta: { $ref: '#/components/schemas/Meta' }
+
+    TeamRef:
+      type: object
+      properties:
+        teamId: { type: string }
+        name: { type: string }
+        abbreviation: { type: string, maxLength: 3 }
+        record: { type: string }
+
+    Game:
+      type: object
+      properties:
+        gameId: { type: string }
+        status: { type: string, enum: [scheduled, live, final, postponed] }
+        startTime: { type: string, format: date-time }
+        arena: { type: string }
+        city: { type: string }
+        homeTeam: { $ref: '#/components/schemas/TeamRef' }
+        awayTeam: { $ref: '#/components/schemas/TeamRef' }
+        broadcast:
+          type: object
+          properties:
+            national: { type: string }
+            home: { type: string }
+            away: { type: string }
+
+    GamesResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            date: { type: string }
+            games:
+              type: array
+              items: { $ref: '#/components/schemas/Game' }
+        meta: { $ref: '#/components/schemas/Meta' }
+
+    StandingsEntry:
+      type: object
+      properties:
+        rank: { type: integer }
+        teamId: { type: string }
+        teamName: { type: string }
+        abbreviation: { type: string }
+        wins: { type: integer }
+        losses: { type: integer }
+        winPercentage: { type: number }
+        gamesBack: { type: number }
+        streak: { type: string }
+        lastTen: { type: string }
+
+    StandingsResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            conference: { type: string }
+            season: { type: string }
+            standings:
+              type: array
+              items: { $ref: '#/components/schemas/StandingsEntry' }
+        meta: { $ref: '#/components/schemas/Meta' }
+      example:
+        status: "success"
+        data:
+          conference: "Western"
+          season: "2025-26"
+          standings:
+            - rank: 1
+              teamId: "t-1610612747"
+              teamName: "Los Angeles Lakers"
+              abbreviation: "LAL"
+              wins: 45
+              losses: 25
+              winPercentage: 0.643
+              gamesBack: 0.0
+              streak: "W3"
+              lastTen: "7-3"
+            - rank: 2
+              teamId: "t-1610612744"
+              teamName: "Golden State Warriors"
+              abbreviation: "GSW"
+              wins: 43
+              losses: 27
+              winPercentage: 0.614
+              gamesBack: 2.0
+              streak: "L1"
+              lastTen: "6-4"
+        meta:
+          requestId: "req-standings123"
+          timestamp: "2026-04-02T10:30:00Z"
+
+    RosterPlayer:
+      type: object
+      properties:
+        playerId: { type: string }
+        name: { type: string }
+        position: { type: string }
+        jerseyNumber: { type: integer }
+        height: { type: string }
+        weight: { type: integer }
+
+    RosterResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            teamId: { type: string }
+            teamName: { type: string }
+            league: { type: string }
+            roster:
+              type: array
+              items: { $ref: '#/components/schemas/RosterPlayer' }
+      example:
+        status: "success"
+        data:
+          teamId: "t-1610612747"
+          teamName: "Los Angeles Lakers"
+          league: "NBA"
+          roster:
+            - playerId: "p-2544"
+              name: "LeBron James"
+              position: "SF"
+              jerseyNumber: 23
+              height: "6-9"
+              weight: 250
+            - playerId: "p-203076"
+              name: "Anthony Davis"
+              position: "PF"
+              jerseyNumber: 3
+              height: "6-10"
+              weight: 253
+
+    LeagueSummaryResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            sportsLeague: { type: string }
+            leagueFullName: { type: string }
+            season: { type: string }
+            seasonType: { type: string }
+            teams:
+              type: array
+              items:
+                type: object
+                properties:
+                  teamId: { type: string }
+                  name: { type: string }
+                  abbreviation: { type: string }
+                  conference: { type: string }
+                  division: { type: string }
+                  arena: { type: string }
+                  city: { type: string }
+                  primaryColor: { type: string }
+                  secondaryColor: { type: string }
+            featuredPlayer:
+              type: object
+              properties:
+                playerId: { type: string }
+                name: { type: string }
+                position: { type: string }
+                teamName: { type: string }
+                stats:
+                  type: object
+                  additionalProperties: { type: number }
+      example:
+        status: "success"
+        data:
+          sportsLeague: "NFL"
+          leagueFullName: "National Football League"
+          season: "2025"
+          seasonType: "Regular Season"
+          teams:
+            - teamId: "nfl-t-001"
+              name: "Kansas City Chiefs"
+              abbreviation: "KC"
+              conference: "AFC"
+              division: "West"
+              arena: "Arrowhead Stadium"
+              city: "Kansas City"
+              primaryColor: "#E31837"
+              secondaryColor: "#FFB81C"
+          featuredPlayer:
+            playerId: "nfl-p-001"
+            name: "Patrick Mahomes"
+            position: "QB"
+            teamName: "Kansas City Chiefs"
+            stats:
+              passingYards: 4839
+              touchdowns: 38
+              interceptions: 12
+
+    StatLeader:
+      type: object
+      properties:
+        playerId: { type: string }
+        name: { type: string }
+        value: { type: number }
+
+    LiveTeamScore:
+      type: object
+      properties:
+        teamId: { type: string }
+        name: { type: string }
+        abbreviation: { type: string }
+        score: { type: integer }
+        timeoutsRemaining: { type: integer }
+        bonusActive: { type: boolean }
+        leaders:
+          type: object
+          properties:
+            points: { $ref: '#/components/schemas/StatLeader' }
+            rebounds: { $ref: '#/components/schemas/StatLeader' }
+            assists: { $ref: '#/components/schemas/StatLeader' }
+
+    LiveGame:
+      type: object
+      properties:
+        gameId: { type: string }
+        status: { type: string, enum: [live] }
+        period: { type: integer }
+        gameClock: { type: string }
+        startTime: { type: string, format: date-time }
+        arena: { type: string }
+        homeTeam: { $ref: '#/components/schemas/LiveTeamScore' }
+        awayTeam: { $ref: '#/components/schemas/LiveTeamScore' }
+
+    LiveScoresResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            lastUpdated: { type: string, format: date-time }
+            games:
+              type: array
+              items: { $ref: '#/components/schemas/LiveGame' }
+        meta: { $ref: '#/components/schemas/Meta' }
+      example:
+        status: "success"
+        data:
+          lastUpdated: "2026-04-02T20:45:12Z"
+          games:
+            - gameId: "g-0022500987"
+              status: "live"
+              period: 3
+              gameClock: "04:12"
+              startTime: "2026-04-02T19:30:00-07:00"
+              arena: "Crypto.com Arena"
+              homeTeam:
+                teamId: "t-1610612747"
+                name: "Los Angeles Lakers"
+                abbreviation: "LAL"
+                score: 84
+                timeoutsRemaining: 3
+                bonusActive: true
+                leaders:
+                  points:
+                    playerId: "p-2544"
+                    name: "LeBron James"
+                    value: 28
+                  rebounds:
+                    playerId: "p-203076"
+                    name: "Anthony Davis"
+                    value: 11
+                  assists:
+                    playerId: "p-2544"
+                    name: "LeBron James"
+                    value: 8
+              awayTeam:
+                teamId: "t-1610612738"
+                name: "Boston Celtics"
+                abbreviation: "BOS"
+                score: 79
+                timeoutsRemaining: 4
+                bonusActive: false
+                leaders:
+                  points:
+                    playerId: "p-1628369"
+                    name: "Jayson Tatum"
+                    value: 24
+                  rebounds:
+                    playerId: "p-1628369"
+                    name: "Jayson Tatum"
+                    value: 6
+                  assists:
+                    playerId: "p-1627759"
+                    name: "Jaylen Brown"
+                    value: 5
+        meta:
+          requestId: "req-live123"
+          timestamp: "2026-04-02T20:45:12Z"
+
+    PlayerRef:
+      type: object
+      properties:
+        playerId: { type: string }
+        name: { type: string }
+
+    Play:
+      type: object
+      properties:
+        playId: { type: string }
+        clock: { type: string }
+        period: { type: integer }
+        teamId: { type: string, nullable: true }
+        playType:
+          type: string
+          enum: [MADE_SHOT, MISSED_SHOT, MADE_THREE, MISSED_THREE, FREE_THROW, REBOUND, ASSIST, TURNOVER, STEAL, BLOCK, FOUL, TIMEOUT, JUMP_BALL, SUBSTITUTION]
+        description: { type: string }
+        player: { $ref: '#/components/schemas/PlayerRef', nullable: true }
+        assistPlayer: { $ref: '#/components/schemas/PlayerRef', nullable: true }
+        scoreHome: { type: integer }
+        scoreAway: { type: integer }
+        coordinates:
+          type: object
+          nullable: true
+          properties:
+            x: { type: number }
+            y: { type: number }
+
+    PlayByPlayResponse:
+      type: object
+      properties:
+        status: { type: string }
+        data:
+          type: object
+          properties:
+            gameId: { type: string }
+            period: { type: integer }
+            plays:
+              type: array
+              items: { $ref: '#/components/schemas/Play' }
+        meta: { $ref: '#/components/schemas/Meta' }
+      example:
+        status: "success"
+        data:
+          gameId: "g-0022500987"
+          period: 3
+          plays:
+            - playId: "play-12345"
+              clock: "04:12"
+              period: 3
+              teamId: "t-1610612747"
+              playType: "MADE_SHOT"
+              description: "LeBron James makes 2-point jump shot (Anthony Davis assists)"
+              player:
+                playerId: "p-2544"
+                name: "LeBron James"
+              assistPlayer:
+                playerId: "p-203076"
+                name: "Anthony Davis"
+              scoreHome: 84
+              scoreAway: 79
+              coordinates:
+                x: 25.5
+                y: 10.2
+        meta:
+          requestId: "req-pbp123"
+          timestamp: "2026-04-02T20:45:15Z"
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []

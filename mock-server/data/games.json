@@ -1,0 +1,76 @@
+[
+  {
+    "gameId": "g-0022500987",
+    "status": "scheduled",
+    "startTime": "2026-04-02T19:30:00-07:00",
+    "arena": "Crypto.com Arena",
+    "city": "Los Angeles",
+    "homeTeam": {
+      "teamId": "t-1610612747",
+      "name": "Los Angeles Lakers",
+      "abbreviation": "LAL",
+      "record": "45-25"
+    },
+    "awayTeam": {
+      "teamId": "t-1610612738",
+      "name": "Boston Celtics",
+      "abbreviation": "BOS",
+      "record": "52-18"
+    },
+    "broadcast": {
+      "national": "ESPN",
+      "home": "Spectrum SportsNet",
+      "away": "NBC Sports Boston"
+    }
+  },
+  {
+    "gameId": "g-0022500988",
+    "status": "scheduled",
+    "startTime": "2026-04-02T20:00:00-07:00",
+    "arena": "Chase Center",
+    "city": "San Francisco",
+    "homeTeam": {
+      "teamId": "t-1610612744",
+      "name": "Golden State Warriors",
+      "abbreviation": "GSW",
+      "record": "54-16"
+    },
+    "awayTeam": {
+      "teamId": "t-1610612748",
+      "name": "Miami Heat",
+      "abbreviation": "MIA",
+      "record": "38-32"
+    },
+    "broadcast": {
+      "national": "TNT",
+      "home": "NBC Sports Bay Area",
+      "away": "Bally Sports Sun"
+    }
+  },
+  {
+    "gameId": "g-0022500989",
+    "status": "final",
+    "startTime": "2026-04-01T19:00:00-04:00",
+    "arena": "TD Garden",
+    "city": "Boston",
+    "homeTeam": {
+      "teamId": "t-1610612738",
+      "name": "Boston Celtics",
+      "abbreviation": "BOS",
+      "record": "52-18",
+      "score": 118
+    },
+    "awayTeam": {
+      "teamId": "t-1610612744",
+      "name": "Golden State Warriors",
+      "abbreviation": "GSW",
+      "record": "54-16",
+      "score": 112
+    },
+    "broadcast": {
+      "national": "ABC",
+      "home": "NBC Sports Boston",
+      "away": "NBC Sports Bay Area"
+    }
+  }
+]

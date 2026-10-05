@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: NBA GameDay API — Live Scores
+  version: 2.0.0
+  description: Real-time live game scores for NBA GameDay app
+
+paths:
+  /api/v2/nba/live-scores:
+    get:
+      summary: Get live game scores
+      description: Returns real-time scores for all currently active NBA games
+      operationId: getLiveScores
+      tags:
+        - Live Scores
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            example: "Bearer eyJhbGci..."
+      responses:
+        '200':
+          description: Live scores retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [success]
+                  data:
+                    type: object
+                    properties:
+                      lastUpdated:
+                        type: string
+                        format: date-time
+                      games:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/LiveGame'
+                  meta:
+                    $ref: '#/components/schemas/Meta'
+
+components:
+  schemas:
+    LiveGame:
+      type: object
+      properties:
+        gameId:
+          type: string
+        status:
+          type: string
+          enum: [scheduled, live, final, postponed]
+        period:
+          type: integer
+          minimum: 1
+          maximum: 6
+        gameClock:
+          type: string
+          pattern: '^\d{2}:\d{2}$'
+        startTime:
+          type: string
+          format: date-time
+        arena:
+          type: string
+        homeTeam:
+          $ref: '#/components/schemas/TeamScore'
+        awayTeam:
+          $ref: '#/components/schemas/TeamScore'
+
+    TeamScore:
+      type: object
+      properties:
+        teamId:
+          type: string
+        name:
+          type: string
+        abbreviation:
+          type: string
+          maxLength: 3
+        score:
+          type: integer
+        timeoutsRemaining:
+          type: integer
+        bonusActive:
+          type: boolean
+        leaders:
+          type: object
+          properties:
+            points:
+              $ref: '#/components/schemas/StatLeader'
+            rebounds:
+              $ref: '#/components/schemas/StatLeader'
+            assists:
+              $ref: '#/components/schemas/StatLeader'
+
+    StatLeader:
+      type: object
+      properties:
+        playerId:
+          type: string
+        name:
+          type: string
+        value:
+          type: number
+
+    Meta:
+      type: object
+      properties:
+        requestId:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        pollingIntervalMs:
+          type: integer

@@ -1,0 +1,16 @@
+{
+  "status": "error",
+  "error": {
+    "code": "FORBIDDEN",
+    "message": "Your API subscription does not include access to player statistics. Please upgrade to Premium tier.",
+    "details": {
+      "requiredTier": "premium",
+      "currentTier": "basic",
+      "upgradeUrl": "https://developer.nbagameday.com/pricing"
+    }
+  },
+  "meta": {
+    "requestId": "req-err-403-001",
+    "timestamp": "2026-04-02T10:30:00Z"
+  }
+}
